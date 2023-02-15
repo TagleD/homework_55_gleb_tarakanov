@@ -1,0 +1,12 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 1,
+  "fields": {
+    "title": "ваыв",
+    "description": "выавыа",
+    "status": "ыва",
+    "ended_at": "2023-02-16T00:47:10.292Z"
+  }
+}
+]
