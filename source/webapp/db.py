@@ -1,5 +1,3 @@
-
-
 class DataBase:
     choices = [('new', 'Новая'), ('in_progress', 'В процессе'), ('made', 'Сделано')]
 

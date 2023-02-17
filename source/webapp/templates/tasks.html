@@ -14,7 +14,8 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="{% static 'images/clan.jpg' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                <img src="{% static 'images/clan.jpg' %}" alt="Logo" width="30" height="30"
+                     class="d-inline-block align-text-top">
                 Scouting
             </a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -44,12 +45,12 @@
     </div>
     <div class="row">
         {% for task in tasks %}
-        <div class="col-4 padding-left-tasks">
-             <h5>{{ task.title }}</h5>
-            <p>{{ task.description }}</p>
-            <p><b>{{ task.status }}</b></p>
-            <p><a href="/task?pk={{ task.pk }}">Подробнее</a></p>
-        </div>
+            <div class="col-4 padding-left-tasks">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <p><b>{{ task.status }}</b></p>
+                <p><a href="/task?pk={{ task.pk }}">Подробнее</a></p>
+            </div>
         {% endfor %}
     </div>
 </div>

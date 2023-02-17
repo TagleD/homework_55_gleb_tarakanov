@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from webapp.models import Task
 
 
@@ -10,5 +9,6 @@ class TaskAdmin(admin.ModelAdmin):
     search_fields = ('id', 'title', 'description', 'status', 'ended_at')
     fields = ('id', 'title', 'description', 'status', 'ended_at')
     readonly_fields = ('id', 'title', 'description', 'status', 'ended_at')
+
 
 admin.site.register(Task, TaskAdmin)
