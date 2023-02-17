@@ -1,5 +1,7 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect
+
+from webapp.db import DataBase
 from webapp.models import Task
 
 def tasks_view(request):
@@ -17,11 +19,12 @@ def detail_view(request):
 
 def add_view(request: WSGIRequest):
     if request.method == 'GET':
-        return render(request, 'add_task.html')
+        context = {'choices': DataBase.choices}
+        return render(request, 'add_task.html', context=context)
     task_data = {
         'title': request.POST.get('title'),
         'description': request.POST.get('description'),
-        'status': request.POST.get('status'),
+        'status': DataBase.get_status(request.POST.get('status')),
         'ended_at': request.POST.get('date')
     }
     task = Task.objects.create(**task_data)

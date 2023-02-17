@@ -60,9 +60,12 @@
             <div class="col-5">
                 <label for="disabledSelect" class="form-label padding-left padding-top">Выберите статус задачи</label>
                 <select id="disabledSelect" class="form-select padding-left" name="status">
-                    <option value="new">New</option>
-                    <option value="middle">Middle</option>
-                    <option value="old">Old</option>
+{#                    <option value="new">New</option>#}
+{#                    <option value="middle">Middle</option>#}
+{#                    <option value="old">Old</option>#}
+                    {% for choice in choices %}
+                        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>

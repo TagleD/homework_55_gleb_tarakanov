@@ -37,14 +37,14 @@
 <div class="container main-container">
     <div class="row">
         <div class="col">
-            <h2>
+            <h2 class="padding-left-tasks">
                 Задачник разведкопуса
             </h2>
         </div>
     </div>
     <div class="row">
         {% for task in tasks %}
-        <div class="col-4">
+        <div class="col-4 padding-left-tasks">
              <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
             <p><b>{{ task.status }}</b></p>
