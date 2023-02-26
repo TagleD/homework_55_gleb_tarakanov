@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-1 button-margin">
-                <a href="#" class='btn btn-danger '>Удалить</a>
+                <a href="{% url 'task_delete' task.pk %}" class='btn btn-danger '>Удалить</a>
             </div>
             <div class="col-1">
                 <a href="{% url 'task_update' task.pk %}" class='btn btn-success'>Редактировать</a>
