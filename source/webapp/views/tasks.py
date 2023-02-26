@@ -1,7 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
-
-from webapp.db import DataBase
 from webapp.forms import TaskForm
 from webapp.models import Task
 
@@ -37,28 +35,18 @@ def add_view(request: WSGIRequest):
     # Success
     else:
         task = Task.objects.create(**form.cleaned_data)
-        return redirect(f'/task?pk={task.pk}')
+        return redirect('detail_view', pk=task.pk)
 
 
-def update_view(request, pk):
+def update_view(request: WSGIRequest, pk):
     task = get_object_or_404(Task, pk=pk)
-    if request.method == 'GET':
-        form = TaskForm(initial={
-            'title': task.title,
-            'description': task.description,
-            'status': task.status,
-            'ended_at': task.ended_at
-        })
-        return render(request, 'update_task.html', context={'form': form, 'task': task})
-    elif request.method == 'POST':
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            task.title = form.cleaned_data['title']
-            task.description = form.cleaned_data['description']
-            task.status = form.cleaned_data['status'],
-            task.ended_at = form.cleaned_data['ended_at']
-            task.save()
-            return redirect(f'/task?pk={task.pk}')
-        else:
-            return render(request, 'update_task.html', context={'form': form, 'task': task})
 
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('detail_view', pk=task.pk)
+        return render(request, 'update_task.html', context={'form': form, 'task': task})
+
+    form = TaskForm(instance=task)
+    return render(request, 'update_task.html', context={'form': form, 'task': task})

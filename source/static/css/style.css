@@ -39,3 +39,9 @@ button {
 .padding-top {
     margin-top: 10px;
 }
+
+.form-margins {
+    margin-top: 40px;
+    margin-left: 40px;
+    padding-top: 15px;
+}
