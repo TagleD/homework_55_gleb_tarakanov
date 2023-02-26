@@ -12,11 +12,11 @@ def tasks_view(request):
     }
     return render(request, 'tasks.html', context=context)
 
-def detail_view(request):
-    task_pk = request.GET.get('pk')
-    task = Task.objects.get(pk=task_pk)
+def detail_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
     context = {'task': task}
     return render(request, 'task_detail.html', context=context)
+
 
 def add_view(request: WSGIRequest):
     # GET
