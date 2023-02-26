@@ -50,3 +50,14 @@ def update_view(request: WSGIRequest, pk):
 
     form = TaskForm(instance=task)
     return render(request, 'update_task.html', context={'form': form, 'task': task})
+
+
+def delete_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'confirm_delete.html', context={'task': task})
+
+
+def confirm_delete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.delete()
+    return redirect('tasks_view')

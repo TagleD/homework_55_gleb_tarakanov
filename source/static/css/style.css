@@ -45,3 +45,8 @@ button {
     margin-left: 40px;
     padding-top: 15px;
 }
+
+.button-margin {
+    margin-left: 23px;
+    margin-right: 15px;
+}

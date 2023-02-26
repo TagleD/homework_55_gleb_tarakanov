@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Подробный просмотр задачи{% endblock %}
+{% block title %}Удаление с подтверждением{% endblock %}
 
 {% block content %}
     <div class="container main-container">
         <div class="row">
             <div class="col">
                 <h2 class="padding-left-tasks-h2">
-                    Подробный просмотр задачи разведкорпуса
+                    Вы точно хотите удалить задачу?
                 </h2>
             </div>
         </div>
@@ -21,12 +21,11 @@
         </div>
         <div class="row">
             <div class="col-1 button-margin">
-                <a href="#" class='btn btn-danger '>Удалить</a>
+                <a href="{% url 'confirm_delete' task.pk %}" class='btn btn-danger'>Удалить</a>
             </div>
             <div class="col-1">
-                <a href="{% url 'task_update' task.pk %}" class='btn btn-success'>Редактировать</a>
+                <a href="{% url 'tasks_view' %}" class='btn btn-success'>Отмена</a>
             </div>
         </div>
     </div>
 {% endblock %}
-
